@@ -22,10 +22,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
+  margin-left: 10px;
 }
 
 .AlbumCard {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 15px;
   gap: 40px;
 }
