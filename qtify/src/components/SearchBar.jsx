@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBtn from "./SeachButton";
 import styles from "./NavBar.module.css"; // Assuming you have a CSS module file for styling
+import {Button} from "@mui/material"
 
 function SearchBar() {
   return (
@@ -11,9 +12,9 @@ function SearchBar() {
         placeholder="Search an album of your choice"
       />
       <div className={styles.VerticalDivider}></div>
-      <button className={styles.SearchBtnContainer}>
+      <Button className={styles.SearchBtnContainer}>
         <SearchBtn />
-      </button>
+      </Button>
     </div>
   );
 }
