@@ -50,7 +50,7 @@
 }
 
 .SearchInput {
-  flex: 1;
+  /* flex: 1; */
   width: 502px;
   height: 100%;
   padding: 0 10px;

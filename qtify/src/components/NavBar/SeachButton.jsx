@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as SearchIcon } from "../assests/Searchicon.svg"
+import { ReactComponent as SearchIcon } from "../../assests/Searchicon.svg"
 
 function SearchBtn() {
     return (

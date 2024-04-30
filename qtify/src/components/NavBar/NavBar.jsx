@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import logo from "../assests/LOGO.png";
+import logo from "../../assests/LOGO.png";
 import FeedBack from "./FeedBack";
 import styles from "./NavBar.module.css";
 import { useTheme } from '@mui/material/styles';

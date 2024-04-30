@@ -3,7 +3,7 @@ import React from "react";
 import { useTheme } from '@mui/material/styles'; 
 
 import styles from "./NavBar.module.css";
-import theme from "./ThemeProvider"; 
+import theme from "../../components/ThemeProvider"; 
 
 function FeedBack() {
     const muiTheme = useTheme(); // Access theme object using useTheme hook

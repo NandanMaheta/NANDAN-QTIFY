@@ -1,0 +1,35 @@
+.MainContainer {
+  width: 100%;
+  height: 270px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.HeroContainer {
+  display: flex;
+  align-items: center;
+  /* width: 779px;
+  height: 212px; */
+}
+
+.HeroText {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px; /* Adjust this margin as needed */
+  /* height: 100px; */
+}
+
+.Hero {
+  width: 212px;
+  height: 212px;
+}
+
+.h2 {
+  height: 48px;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 48px;
+  text-align: center;
+}
