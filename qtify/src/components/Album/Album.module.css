@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* position: relative; */
+}
+
+.MainCont {
+  width: 100%;
+  position: absolute;
+  display: flex;
+
+  flex-direction: column;
+
+ 
+
+  background-color: #121212;
+
+  opacity: 0px;
+}
+
+.Headings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.AlbumCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
