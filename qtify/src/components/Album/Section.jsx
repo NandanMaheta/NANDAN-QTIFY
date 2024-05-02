@@ -4,29 +4,30 @@ import Card from "./Card";
 import theme from "../../components/ThemeProvider";
 import { useTheme } from "@emotion/react";
 import styles from "./Album.module.css";
-import { Button, Skeleton } from "@mui/material";
+import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import Skeleton from "@mui/material/Skeleton";
+import { Troubleshoot } from "@mui/icons-material";
 
-export default function Section() {
-  const [topAlbums, setTopAlbums] = useState([]);
-  const [newAlbums, setNewAlbums] = useState([]);
+export default function Section({url,title}) {
+  const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const muiTheme = useTheme();
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11];
 
   const fetchData = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const responseTop = await axios.get(
-        "https://qtify-backend-labs.crio.do/albums/top"
-      );
-      if (responseTop.data) {
-        setTopAlbums(responseTop.data);
+      const response = await axios.get(url);
+      if (response.data) {
+        setAlbums(response.data);
+        setLoading(false);
+      } else {
+        alert("Failed to fetch");
       }
     } catch (e) {
-      setLoading(true);
-      console.log(e);
-    } finally {
       setLoading(false);
+      console.log(e);
     }
   };
 
@@ -36,7 +37,7 @@ export default function Section() {
 
   return (
     <section
-      title="Top Albums"
+      title={title}
       style={{ backgroundColor: muiTheme.palette.primary.dark }}
       className={styles.MainCont}
     >
@@ -48,9 +49,9 @@ export default function Section() {
           Collapse
         </Button>
       </div>
-      {topAlbums.length > 0 && !loading ? (
+      {albums.length > 0 && !loading ? (
         <div className={styles.AlbumCard}>
-          {topAlbums.map((album) => (
+          {albums.map((album) => (
             <Card
               key={album.id}
               img={album.image}
@@ -60,7 +61,28 @@ export default function Section() {
           ))}
         </div>
       ) : (
-        <Skeleton variant="rectangular" width={1000} height={60} />
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "40px",
+            marginLeft:"12px"
+          }}
+        >
+          {arr.map((item) => (
+            <Skeleton
+              variant="rectangular"
+              animation="wave"
+              style={{
+                backgroundColor: "#ddd",
+                width: "159px",
+                height: "216px",
+                borderRadius:"8px",
+                marginBlockEnd:"14px",
+              }}
+            />
+          ))}
+        </div>
       )}
     </section>
   );
