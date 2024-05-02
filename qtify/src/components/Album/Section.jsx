@@ -7,12 +7,44 @@ import styles from "./Album.module.css";
 import { Button } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 
+const sklton = (array) => {
+  return (
+    <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "40px",
+          marginLeft: "12px",
+        }}
+      >
+        {array.map((item) => (
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            style={{
+              backgroundColor: "#ddd",
+              width: "159px",
+              height: "216px",
+              borderRadius: "8px",
+              marginBlockEnd: "14px",
+            }}
+          />
+        ))}
+      </div>
+  )
+}
+
 export default function SectionAlbum({ url, title }) {
-  // console.log(title);
+
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const muiTheme = useTheme();
-  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  let arr = [1,2,3,4,5,6,7,8,9,10,11];
+  const [toggle,isToggle] = useState(false);
+
+  const handleToggle = () => {
+    isToggle(!toggle);
+  }
 
   const fetchData = async () => {
     setLoading(true);
@@ -44,9 +76,10 @@ export default function SectionAlbum({ url, title }) {
       <div className={styles.Headings}>
         <h1 style={{ color: muiTheme.palette.primary.light }}>{title}</h1>
         <Button
+          onClick={handleToggle}
           style={{ color: muiTheme.palette.primary.main, marginRight: "8px" }}
         >
-          Collapse
+          {toggle ?"Show all":"Collapse"}
         </Button>
       </div>
       {albums.length > 0 && !loading ? (
@@ -60,30 +93,8 @@ export default function SectionAlbum({ url, title }) {
             />
           ))}
         </div>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "40px",
-            marginLeft: "12px",
-          }}
-        >
-          {arr.map((item) => (
-            <Skeleton
-              variant="rectangular"
-              animation="wave"
-              style={{
-                backgroundColor: "#ddd",
-                width: "159px",
-                height: "216px",
-                borderRadius: "8px",
-                marginBlockEnd: "14px",
-              }}
-            />
-          ))}
-        </div>
-      )}
+      ) : (sklton(arr)
+        )}
     </div>
   );
 }
