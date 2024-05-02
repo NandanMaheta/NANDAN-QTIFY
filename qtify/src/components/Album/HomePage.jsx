@@ -4,17 +4,14 @@ import Divider from "@mui/material/Divider";
 
 
 
-export default function HomePage({toggle}) {
+export default function HomePage() {
   return (
     <div>
-      {toggle && <SectionAlbum
-        title="Top Albums"
-        url="https://qtify-backend-labs.crio.do/albums/top"
-      />}
       <SectionAlbum
         title="Top Albums"
         url="https://qtify-backend-labs.crio.do/albums/top"
       />
+      
       <Divider
         style={{ backgroundColor: "#34C94B", width: "100%", height: "1px" }}
       />

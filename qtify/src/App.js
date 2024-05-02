@@ -15,6 +15,7 @@ function App() {
       <NavBar/>
       <HeroImage text={{line1: "100 Thousand Songs, ad-free", line2: "Over thousands podcast episodes"}}/>
       <HomePage/>
+      
     </ThemeProvider>
   );
 }

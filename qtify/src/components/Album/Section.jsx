@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "./Card";
+import AlbumCard from "./Card";
 import theme from "../ThemeProvider";
 import { useTheme } from "@emotion/react";
 import styles from "./Album.module.css";
 import { Button } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
+import Carousel from "../Carousel/Carousel";
 
 const sklton = (array) => {
   return (
@@ -79,22 +80,29 @@ export default function SectionAlbum({ url, title }) {
           onClick={handleToggle}
           style={{ color: muiTheme.palette.primary.main, marginRight: "8px" }}
         >
-          {toggle ?"Show all":"Collapse"}
+          {toggle ?"Collapse":"Show All"}
         </Button>
       </div>
-      {albums.length > 0 && !loading ? (
-        <div className={styles.AlbumCard}>
+      {loading && albums.length ? (
+        sklton(arr)
+      ): (
+        toggle ? (
+          <div className={styles.AlbumCard}>
           {albums.map((album) => (
-            <Card
+            <AlbumCard
               key={album.id}
               img={album.image}
               title={album.title}
               follows={album.follows}
             />
           ))}
+          
         </div>
-      ) : (sklton(arr)
-        )}
+        ): (
+          <Carousel data={albums}/>
+        )
+      )}
+    
     </div>
   );
 }
