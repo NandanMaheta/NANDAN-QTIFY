@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
-import theme from "../../components/ThemeProvider";
+import theme from "../ThemeProvider";
 import { useTheme } from "@emotion/react";
 import styles from "./Album.module.css";
 import { Button } from "@mui/material";
-import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
-import { Troubleshoot } from "@mui/icons-material";
 
-export default function Section({url,title}) {
+
+export default function SectionNew({url,title}) {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const muiTheme = useTheme();
   let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11];
 
   const fetchData = async () => {
+    
     setLoading(true);
     try {
       const response = await axios.get(url);
       if (response.data) {
+        
         setAlbums(response.data);
         setLoading(false);
       } else {
@@ -52,12 +53,14 @@ export default function Section({url,title}) {
       {albums.length > 0 && !loading ? (
         <div className={styles.AlbumCard}>
           {albums.map((album) => (
+            
             <Card
               key={album.id}
               img={album.image}
               title={album.title}
               follows={album.follows}
             />
+            
           ))}
         </div>
       ) : (

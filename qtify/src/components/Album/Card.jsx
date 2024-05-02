@@ -8,6 +8,7 @@ import Chip from "@mui/material/Chip";
 import styles from "./Album.module.css";
 
 export default function AlbumCard({img,title,follows}) {
+  
   return (
     <div style={{height:"232px", }}>
       <Card sx={{ width: "159px", height: "205px", borderRadius: "8px",overflow:"hidden" }}>

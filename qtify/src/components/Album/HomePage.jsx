@@ -1,11 +1,12 @@
 import React from "react";
-import Section from "./Section";
+import SectionTop from "./SectionTop";
+import SectionNew from "./SectionNew";
 
 export default function HomePage() {
     return (
         <>
-            <Section title="Top Albums" url="https://qtify-backend-labs.crio.do/albums/top" />
-            <Section title="New Albums" url="https://qtify-backend-labs.crio.do/albums/new" />
+            <SectionTop title="Top Albums" url="https://qtify-backend-labs.crio.do/albums/top" />
+            <SectionNew title="New Albums" url="https://qtify-backend-labs.crio.do/albums/new" />
         </>
     );
 }
