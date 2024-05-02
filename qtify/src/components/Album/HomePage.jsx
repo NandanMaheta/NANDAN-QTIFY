@@ -1,12 +1,14 @@
 import React from "react";
-import SectionTop from "./SectionTop";
-import SectionNew from "./SectionNew";
+import SectionAlbum from "./Section";
+import Divider from '@mui/material/Divider';
+
 
 export default function HomePage() {
     return (
-        <>
-            <SectionTop title="Top Albums" url="https://qtify-backend-labs.crio.do/albums/top" />
-            <SectionNew title="New Albums" url="https://qtify-backend-labs.crio.do/albums/new" />
-        </>
+        <div>
+            <SectionAlbum title="Top Albums" url="https://qtify-backend-labs.crio.do/albums/top"/>
+           <Divider style={{backgroundColor:"#34C94B",width:"100%",height:"1px"}}/>
+            <SectionAlbum title="New Albums" url="https://qtify-backend-labs.crio.do/albums/new" />
+        </div>
     );
 }

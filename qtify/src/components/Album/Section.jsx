@@ -7,20 +7,18 @@ import styles from "./Album.module.css";
 import { Button } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 
-
-export default function SectionNew({url,title}) {
+export default function SectionAlbum({ url, title }) {
+  // console.log(title);
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const muiTheme = useTheme();
-  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11];
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   const fetchData = async () => {
-    
     setLoading(true);
     try {
       const response = await axios.get(url);
       if (response.data) {
-        
         setAlbums(response.data);
         setLoading(false);
       } else {
@@ -33,17 +31,18 @@ export default function SectionNew({url,title}) {
   };
 
   useEffect(() => {
+
     fetchData();
   }, []);
 
   return (
-    <section
+    <div
       title={title}
       style={{ backgroundColor: muiTheme.palette.primary.dark }}
       className={styles.MainCont}
     >
       <div className={styles.Headings}>
-        <h1 style={{ color: muiTheme.palette.primary.light }}>Top Albums</h1>
+        <h1 style={{ color: muiTheme.palette.primary.light }}>{title}</h1>
         <Button
           style={{ color: muiTheme.palette.primary.main, marginRight: "8px" }}
         >
@@ -53,14 +52,12 @@ export default function SectionNew({url,title}) {
       {albums.length > 0 && !loading ? (
         <div className={styles.AlbumCard}>
           {albums.map((album) => (
-            
             <Card
               key={album.id}
               img={album.image}
               title={album.title}
               follows={album.follows}
             />
-            
           ))}
         </div>
       ) : (
@@ -69,7 +66,7 @@ export default function SectionNew({url,title}) {
             display: "flex",
             flexWrap: "wrap",
             gap: "40px",
-            marginLeft:"12px"
+            marginLeft: "12px",
           }}
         >
           {arr.map((item) => (
@@ -80,13 +77,13 @@ export default function SectionNew({url,title}) {
                 backgroundColor: "#ddd",
                 width: "159px",
                 height: "216px",
-                borderRadius:"8px",
-                marginBlockEnd:"14px",
+                borderRadius: "8px",
+                marginBlockEnd: "14px",
               }}
             />
           ))}
         </div>
       )}
-    </section>
+    </div>
   );
 }
