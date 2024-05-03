@@ -6,8 +6,8 @@ import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 
 
-export default function SongCard({img,title,follows,likes,type}) {
-  
+export default function SongCard({data}) {
+  const {image,likes,title} = data;
   return (
     <div style={{height:"232px", }}>
       <Card sx={{ width: "159px", height: "205px", borderRadius: "8px",overflow:"hidden" }}>
@@ -15,7 +15,7 @@ export default function SongCard({img,title,follows,likes,type}) {
           <CardMedia
             component="img"
             height="170px"
-            image={img}
+            image={image}
             alt="green iguana"
           />
         </CardActionArea>

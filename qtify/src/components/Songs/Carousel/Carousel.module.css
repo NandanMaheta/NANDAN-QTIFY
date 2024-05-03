@@ -1,4 +1,4 @@
-.container {
+/* .container {
   flex: 0 0 auto;
   width: 100%;
   max-width: max-content;
@@ -14,4 +14,10 @@
   display: flex;
   margin-left: 10px;
   gap: 40px;
+} */
+
+.wrapper{
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
 }

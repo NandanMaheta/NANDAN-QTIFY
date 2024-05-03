@@ -2,47 +2,44 @@ import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
-import LeftArrow from "./Left/Left";
-import RightArrow from "./Right/Right";
+import LeftArw from "./Left/Left";
+import RightArw from "./Right/Right";
 import style from "../Carousel/Carousel.module.css";
 import SongCard from "../SongCard";
+import { useSwiper } from "swiper/react";
 
-const SongsCarousel = ({ data }) => {
-  
+const Controls = ({ data }) => {
+  let swiper = useSwiper();
+
+  useEffect(() => {}, [data]);
+
+  return <></>;
+};
+
+const SongsCarousel = ({ data, renderCardComponent }) => {
   return (
-    <div className={style.container}>
+    <div className={style.wrapper}>
       <Swiper
-        style={{ padding: "0px 20px", position: "relative !important" }}
         initialSlide={0}
-        modules={[Navigation]}
+        modules={{ Navigation }}
         slidesPerView={"auto"}
         spaceBetween={40}
         allowTouchMove
+        
       >
-        <div className={style.arrow}>
-          <LeftArrow />
-          <RightArrow />
-        </div>
-
-        <div>
-          <SwiperSlide className={style.container} >
-            <div className={style.AlbumCard}>
-              
-              {data.map((album, index) => (
-                <SongCard
-                  // index= {index}
-                  key={album.id}
-                  img={album.image}
-                  title={album.title}
-                  follows={album.follows}
-                  likes={album.likes}
-                />
-              ))}
-            </div>
-          </SwiperSlide>
-        </div>
+        <Controls data={data} />
+        <LeftArw />
+        <RightArw />
+        {data &&
+          data.map((item) => (
+            <SwiperSlide >
+              {renderCardComponent(item)}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );
+
+  
 };
 export default SongsCarousel;

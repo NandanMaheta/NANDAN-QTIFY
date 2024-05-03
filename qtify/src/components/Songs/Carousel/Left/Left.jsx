@@ -1,22 +1,23 @@
 import style from "./Left.module.css"
 import React, { useEffect ,useState} from "react";
-import { ReactComponent as LeftArw } from "../../../../assests/LEFT.svg";
+import { ReactComponent as LeftArrow } from "../../../../assests/LEFT.svg";
 import { useSwiper } from "swiper/react";
 
-const LeftArrow = () => {
-    const swiper =useSwiper();
-    const [isBeginning,setisBeginning]=useState(swiper.isBeginning);
-    useEffect(()=>{
-            swiper.on("slideChange",function(){
-                setisBeginning(swiper.isBeginning);
-            })
-           },[]);
-    return (
-        <div className={style.leftarrow}>             
-         <LeftArw onClick={()=>swiper.slidePrev()}/> 
-        </div>
-    );
+const LeftArw = () => {
+    const swiper = useSwiper();
+    const [isBeginning,setIsBeginning] = useState(swiper.isBeginning)
+
+    useEffect(() => {
+        swiper.on("slideChange", () => {
+            setIsBeginning(swiper.isBeginning)
+        })
+    },[swiper])
+  return (
+    <div className={style.leftNavigation}>
+        {!isBeginning && <LeftArrow onClick={() => swiper.slidePrev()}/>}
+    </div>
+  )
 };
 
-export default LeftArrow;
+export default LeftArw;
 

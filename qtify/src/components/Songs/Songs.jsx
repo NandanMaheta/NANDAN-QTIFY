@@ -5,6 +5,8 @@ import styles from "../Album/Album.module.css";
 import { CircularProgress } from "@mui/material";
 import SongsCarousel from "./Carousel/Carousel";
 
+import SongCard from "./SongCard";
+
 
 export default function Songs({ url, title, type }) {
   const [albums, setAlbums] = useState([]);
@@ -43,7 +45,7 @@ export default function Songs({ url, title, type }) {
       {loading && albums.length ? (
         <CircularProgress/>
       ) : 
-        <SongsCarousel data={albums} />
+        albums && <SongsCarousel data={albums} renderCardComponent={(data) => <SongCard data={data} type={type}/>}/>
       }
     </div>
   );
