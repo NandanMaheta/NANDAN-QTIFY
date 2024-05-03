@@ -1,8 +1,0 @@
-.leftarrow {
-    z-index:3;
-    justify-content: flex-start;
-    left: 10px;
-    top:30%;
-    display: flex;
-    position:absolute;
-}

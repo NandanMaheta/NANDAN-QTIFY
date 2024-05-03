@@ -7,7 +7,7 @@ import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 
 
-export default function AlbumCard({img,title,follows,likes,type}) {
+export default function AlbumCard({data}) {
   
   return (
     <div style={{height:"232px", }}>
@@ -16,14 +16,14 @@ export default function AlbumCard({img,title,follows,likes,type}) {
           <CardMedia
             component="img"
             height="170px"
-            image={img}
+            image={data.image}
             alt="green iguana"
           />
         </CardActionArea>
 
         <CardContent style={{ padding: "2px", backgroundColor: "#FFFFFF" }}>
           <Chip
-            label={`${follows} Follows`}
+            label={`${data.follows} Follows`}
             sx={{
               width: "90px",
               height: "23px",
@@ -53,7 +53,7 @@ export default function AlbumCard({img,title,follows,likes,type}) {
           marginBottom:"100px"
         }}
       >
-        {title}
+        {data.title}
       </p>
     </div>
   );

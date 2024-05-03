@@ -5,7 +5,7 @@ import "swiper/css";
 import LeftArw from "./Left/Left";
 import RightArw from "./Right/Right";
 import style from "../Carousel/Carousel.module.css";
-import SongCard from "../SongCard";
+import AlbumCard from "../Card"
 import { useSwiper } from "swiper/react";
 
 const Controls = ({ data }) => {
@@ -16,8 +16,9 @@ const Controls = ({ data }) => {
   return <></>;
 };
 
-const SongsCarousel = ({ data, renderCardComponent }) => {
-  return (
+const Carousel = ({ data, renderCardComponent }) => {
+  
+  return (data &&
     <div className={style.wrapper}>
       <Swiper
         initialSlide={0}
@@ -42,4 +43,4 @@ const SongsCarousel = ({ data, renderCardComponent }) => {
 
   
 };
-export default SongsCarousel;
+export default Carousel;

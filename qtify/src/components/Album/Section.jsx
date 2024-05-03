@@ -6,7 +6,7 @@ import { useTheme } from "@emotion/react";
 import styles from "./Album.module.css";
 import { Button } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "./Carousel/Carousel";
 
 const sklton = (array) => {
   return (
@@ -88,17 +88,14 @@ export default function SectionAlbum({ url, title, type }) {
         <div className={styles.AlbumCard}>
           {albums.map((album) => (
             <AlbumCard
-              key={album.id}
-              img={album.image}
-              title={album.title}
-              follows={album.follows}
-              type="album"
-              likes={album.likes}
+              data={album}
             />
           ))}
         </div>
-      ) : (
-        <Carousel data={albums} />
+      ) : (albums &&
+        <Carousel
+         data={albums}
+         renderCardComponent={(data) => <AlbumCard data={data} type={type} />} />
       )}
     </div>
   );
