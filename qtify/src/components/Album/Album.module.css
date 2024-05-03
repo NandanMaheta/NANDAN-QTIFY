@@ -32,3 +32,9 @@
   margin-left: 30px;
   gap: 40px;
 }
+
+.SongsAlbumCard{
+  display: flex;
+  margin-left: 30px;
+  gap: 40px;
+}

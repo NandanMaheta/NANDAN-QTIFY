@@ -2,12 +2,11 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-
 import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 
 
-export default function AlbumCard({img,title,follows,likes,type}) {
+export default function SongCard({img,title,follows,likes,type}) {
   
   return (
     <div style={{height:"232px", }}>
@@ -23,7 +22,7 @@ export default function AlbumCard({img,title,follows,likes,type}) {
 
         <CardContent style={{ padding: "2px", backgroundColor: "#FFFFFF" }}>
           <Chip
-            label={`${follows} Follows`}
+            label={`${likes} Likes`}
             sx={{
               width: "90px",
               height: "23px",

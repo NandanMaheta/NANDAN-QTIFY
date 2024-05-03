@@ -5,9 +5,9 @@ import "swiper/css";
 import LeftArrow from "./Left/Left";
 import RightArrow from "./Right/Right";
 import style from "../Carousel/Carousel.module.css";
-import AlbumCard from "../Album/Card";
+import SongCard from "../SongCard";
 
-const Carousel = ({ data }) => {
+const SongsCarousel = ({ data }) => {
   
   return (
     <div className={style.container}>
@@ -29,7 +29,7 @@ const Carousel = ({ data }) => {
             <div className={style.AlbumCard}>
               
               {data.map((album, index) => (
-                <AlbumCard
+                <SongCard
                   // index= {index}
                   key={album.id}
                   img={album.image}
@@ -45,4 +45,4 @@ const Carousel = ({ data }) => {
     </div>
   );
 };
-export default Carousel;
+export default SongsCarousel;

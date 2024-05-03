@@ -11,41 +11,40 @@ import Carousel from "../Carousel/Carousel";
 const sklton = (array) => {
   return (
     <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "40px",
-          marginLeft: "12px",
-        }}
-      >
-        {array.map((item) => (
-          <Skeleton
-            variant="rectangular"
-            animation="wave"
-            style={{
-              backgroundColor: "#ddd",
-              width: "159px",
-              height: "216px",
-              borderRadius: "8px",
-              marginBlockEnd: "14px",
-            }}
-          />
-        ))}
-      </div>
-  )
-}
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "40px",
+        marginLeft: "12px",
+      }}
+    >
+      {array.map((item) => (
+        <Skeleton
+          variant="rectangular"
+          animation="wave"
+          style={{
+            backgroundColor: "#ddd",
+            width: "159px",
+            height: "216px",
+            borderRadius: "8px",
+            marginBlockEnd: "14px",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
-export default function SectionAlbum({ url, title }) {
-
+export default function SectionAlbum({ url, title, type }) {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const muiTheme = useTheme();
-  let arr = [1,2,3,4,5,6,7,8,9,10,11];
-  const [toggle,isToggle] = useState(false);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const [toggle, isToggle] = useState(false);
 
   const handleToggle = () => {
     isToggle(!toggle);
-  }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -64,9 +63,9 @@ export default function SectionAlbum({ url, title }) {
   };
 
   useEffect(() => {
-
     fetchData();
   }, []);
+
 
   return (
     <div
@@ -80,29 +79,27 @@ export default function SectionAlbum({ url, title }) {
           onClick={handleToggle}
           style={{ color: muiTheme.palette.primary.main, marginRight: "8px" }}
         >
-          {toggle ?"Collapse":"Show All"}
+          {toggle ? "Collapse" : "Show All"}
         </Button>
       </div>
       {loading && albums.length ? (
         sklton(arr)
-      ): (
-        toggle ? (
-          <div className={styles.AlbumCard}>
+      ) : toggle ? (
+        <div className={styles.AlbumCard}>
           {albums.map((album) => (
             <AlbumCard
               key={album.id}
               img={album.image}
               title={album.title}
               follows={album.follows}
+              type="album"
+              likes={album.likes}
             />
           ))}
-          
         </div>
-        ): (
-          <Carousel data={albums}/>
-        )
+      ) : (
+        <Carousel data={albums} />
       )}
-    
     </div>
   );
 }
